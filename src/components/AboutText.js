@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/AboutText.css';
 
 function AboutText(props) {
@@ -7,6 +8,13 @@ function AboutText(props) {
       {props.children}
     </about-text>
   )
+}
+
+AboutText.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 }
 
 export default AboutText;

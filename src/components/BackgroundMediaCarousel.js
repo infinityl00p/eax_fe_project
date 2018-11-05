@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import BackgroundMediaCarouselVideo from './BackgroundMediaCarouselVideo';
 import BackgroundMediaCarouselImage from './BackgroundMediaCarouselImage';
 import TrackVisibility from 'react-on-screen';
+import PropTypes from 'prop-types';
 import '../styles/BackgroundMediaCarousel.css'
 
+/**
+ * BackgroundMediaCarousel: Creates a carousel depending on the length of the given array, handles changing
+ * multiple videos mixed with multiple images as well as single video and images
+ *  */
 class BackgroundMediaCarousel extends Component {
   constructor(props) {
     super(props);
@@ -14,10 +19,16 @@ class BackgroundMediaCarousel extends Component {
     }
   }
 
+  //Set the counter if an image is on the carousel (videos stop playing when finished)
   componentDidMount() {
-    if (this.props.mediaItems.length > 1) { setInterval(this.updateSecondsActive, 1000); }
+    const { mediaItems } = this.props;
+
+    if (mediaItems.length > 1 && mediaItems[this.state.currentElementIndex].type === 'image') {
+      setInterval(this.updateSecondsActive, 1000);
+    }
   }
 
+  //Increment the seconds or reset the seconds and change the item
   updateSecondsActive = () => {
     let { secondsActive, currentElementIndex } = this.state;
     const { mediaItems } = this.props;
@@ -46,7 +57,7 @@ class BackgroundMediaCarousel extends Component {
   }
 
   handleVideoEnded = () => {
-    //if its not already looping
+    //if its not the only item, set the next item in the carousel to play
     if (this.props.mediaItems.length !== 1) {
       return this.setNextItem();
     }
@@ -77,12 +88,16 @@ class BackgroundMediaCarousel extends Component {
   render() {
     return (
       <div className="background-media-carousel--overlay">
-        <TrackVisibility>
+        <TrackVisibility partialVisibility>
           {this.renderActiveItem()}
         </TrackVisibility>
       </div>
     )
   }
+}
+
+BackgroundMediaCarousel.propTypes = {
+  mediaItems: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default BackgroundMediaCarousel;

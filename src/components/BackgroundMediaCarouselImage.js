@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from './Icon';
+import PropTypes from 'prop-types';
 
 /**
  * Description: Renders a fullpage background-image and its Icon
@@ -28,5 +29,11 @@ const BackgroundMediaCarouselImage = props => (
     />
   </background-mediacarousel-image>
 );
+
+BackgroundMediaCarouselImage.propTypes = {
+  backgroundImage: PropTypes.string,
+  gameIcon: PropTypes.string || null,
+  gameIconLabel: PropTypes.string || null
+}
 
 export default BackgroundMediaCarouselImage;

@@ -1,44 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Name: James Gill
+Date: Nov.5/2018
+Project-Name: EAX_FE_Assignment
 
-## Available Scripts
+# Installation and Setup
+1. The first step is to ensure `node` and `npm` are installed on your machine
+2. `node_modules` have been removed in order to reduce total file size, run `npm install` in order to install dependencies
+3. `npm run start` to start the app
+4. You should be automatically redirected to `localhost:3000`
 
-In the project directory, you can run:
 
-### `npm start`
+## Project Check List
+[x] The background along with game icons are part of a background media carousel. Below is the requirement for timing of content rotation:
+a. Images: images along with the game icon rotate should every 10 seconds
+b. Videos: videos should play to the end before rotating (along with game icon)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[x] The carousel is expected to be able to handle any of these content:
+a.	Multiple videos (with variable lengths)
+b.	Single video
+c.	Multiple images
+d.	Single image
+e.	Combination of videos and images
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+[x]	Videos are all hosted on YouTube.
+[x]	Use images/videos provided in the html attached.
+[x]	The top navigation should be dynamically populated; navigation anchor data should come from anchors <about-navigation-anchor> embedded in each <about-section>.Keep in mind that the order in which each <about-navigation-anchor> gets initialized is not guaranteed. The ordering of each anchor in top navigation should be preserved. NOTE: The top navigation can be seen near the center of the top section in the wireframe, which reads:
+a.	“Great PC Games                            Download Now”
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[x]	The page must be fully functional in latest versions of Edge, Firefox and Chrome
+[x]  Bonus 1: Pause carousel videos when out of the viewport, the video should resume when video is back in viewport
+[x]	Bonus 2: Make the page responsive

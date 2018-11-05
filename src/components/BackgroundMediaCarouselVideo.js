@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Youtube from 'react-youtube';
 import Icon from './Icon';
+import PropTypes from 'prop-types';
 import '../styles/BackgroundMediaCarouselVideo.css'
 
 class BackgroundMediaCarouselVideo extends Component {
+  //check the visibility every second
   _onPlay = (e) => {
     setInterval(() => { return this.checkVisible(e) }, 1000);
   }
+
 
   checkVisible = (e) => {
     if (!this.props.isVisible) {
@@ -38,7 +41,6 @@ class BackgroundMediaCarouselVideo extends Component {
             onEnd={this.props.handleVideoEnded}
             opts={opts}
             onPlay={this._onPlay}
-            onPause={this._onPause}
           />
         </div>
         <Icon
@@ -50,5 +52,10 @@ class BackgroundMediaCarouselVideo extends Component {
   }
 }
 
+BackgroundMediaCarouselVideo.propTypes = {
+  youtubeVideoId: PropTypes.string,
+  gameIcon: PropTypes.string || null,
+  gameIconLabel: PropTypes.string || null
+}
 
 export default BackgroundMediaCarouselVideo;

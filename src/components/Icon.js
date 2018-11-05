@@ -1,6 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../styles/Icon.css';
 
+/**
+ * Renders game icon
+ */
 const Icon = props => (
   <div className="game-icon">
     <label className="game-icon__label">
@@ -10,5 +14,10 @@ const Icon = props => (
     </img>
   </div>
 );
+
+Icon.propTypes = {
+  label: PropTypes.string,
+  icon: PropTypes.string
+}
 
 export default Icon;
