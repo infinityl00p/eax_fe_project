@@ -5,11 +5,26 @@ import PropTypes from 'prop-types';
 import '../styles/BackgroundMediaCarouselVideo.css'
 
 class BackgroundMediaCarouselVideo extends Component {
-  //check the visibility every second
-  _onPlay = (e) => {
-    setInterval(() => { return this.checkVisible(e) }, 1000);
+  constructor() {
+    super();
+
+    this.intervals = [];
   }
 
+  //check the visibility every 1.5s
+  _onPlay = (e) => {
+    var interval = setInterval(() => { this.checkVisible(e) }, 1500);
+    this.intervals.push(interval);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.checkVisible);
+    this.intervals.forEach(clearInterval);
+  }
+
+  componentWillUpdate() {
+    clearInterval(this.checkVisible);
+  }
 
   checkVisible = (e) => {
     if (!this.props.isVisible) {
@@ -27,8 +42,7 @@ class BackgroundMediaCarouselVideo extends Component {
         mute: 1,
         modestbranding: 1,
         loop: this.props.loop,
-        playlist: this.props.loop ? this.props.youtubeVideoId : null,
-        start: 105
+        playlist: this.props.loop ? this.props.youtubeVideoId : null
       }
     }
 
@@ -41,6 +55,7 @@ class BackgroundMediaCarouselVideo extends Component {
             onEnd={this.props.handleVideoEnded}
             opts={opts}
             onPlay={this._onPlay}
+            onPause={this._onPause}
           />
         </div>
         <Icon
