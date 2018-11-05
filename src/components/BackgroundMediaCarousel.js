@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BackgroundMediaCarouselVideo from './BackgroundMediaCarouselVideo';
 import BackgroundMediaCarouselImage from './BackgroundMediaCarouselImage';
+import TrackVisibility from 'react-on-screen';
 import '../styles/BackgroundMediaCarousel.css'
 
 class BackgroundMediaCarousel extends Component {
@@ -45,7 +46,10 @@ class BackgroundMediaCarousel extends Component {
   }
 
   handleVideoEnded = () => {
-    return this.setNextItem();
+    //if its not already looping
+    if (this.props.mediaItems.length !== 1) {
+      return this.setNextItem();
+    }
   }
 
   renderActiveItem = () => {
@@ -59,6 +63,7 @@ class BackgroundMediaCarousel extends Component {
         gameIcon={mediaItems[currentElementIndex].gameIcon || null}
         gameIconLabel={mediaItems[currentElementIndex].gameIconLabel || null}
         handleVideoEnded={this.handleVideoEnded}
+        loop={this.props.mediaItems.length === 1 ? 1 : 0}
       />
       :
       <BackgroundMediaCarouselImage
@@ -72,7 +77,9 @@ class BackgroundMediaCarousel extends Component {
   render() {
     return (
       <div className="background-media-carousel--overlay">
-        {this.renderActiveItem()}
+        <TrackVisibility>
+          {this.renderActiveItem()}
+        </TrackVisibility>
       </div>
     )
   }

@@ -48,7 +48,12 @@ class App extends Component {
     var htmlString = '';
 
     for (var i = 0; i < navAnchors.length; i++) {
-      htmlString += `<li><a href=${navAnchors[i].getAttribute('anchor-id')}>${navAnchors[i].getAttribute('title-str')}</a></li>`;
+      //handle case where ordering is not gauranteed
+      if (htmlString !== '' && navAnchors[i].getAttribute('anchor-id') === 'greatpcgames') {
+        htmlString = `<li><a href=#${navAnchors[i].getAttribute('anchor-id')}>${navAnchors[i].getAttribute('title-str')}</a></li>` + htmlString;
+      } else {
+        htmlString += `<li><a href=#${navAnchors[i].getAttribute('anchor-id')}>${navAnchors[i].getAttribute('title-str')}</a></li>`;
+      }
     }
 
     navList[0].innerHTML = htmlString;
@@ -72,7 +77,7 @@ class App extends Component {
         </header>
 
         <main>
-          <section className="about-section">
+          <section id="greatpcgames" className="about-section">
             <about-navigation-anchor title-str="Great PC games" anchor-id="greatpcgames"></about-navigation-anchor>
             <BackgroundMediaCarousel mediaItems={carouselData[1]} />
             <AboutText>
@@ -81,7 +86,7 @@ class App extends Component {
             </AboutText>
           </section>
 
-          <section className="about-section">
+          <section id="downloadnow" className="about-section">
             <about-navigation-anchor title-str="Download now" anchor-id="downloadnow"></about-navigation-anchor>
             <BackgroundMediaCarousel mediaItems={carouselData[2]} />
             <AboutText>
