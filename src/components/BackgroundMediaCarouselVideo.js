@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
+import Youtube from 'react-youtube';
 import Icon from './Icon';
+import '../styles/BackgroundMediaCarouselVideo.css'
 
 class BackgroundMediaCarouselVideo extends Component {
-
-
   render() {
+    const opts = {
+      playerVars: {
+        autoplay: 1,
+        controls: 0,
+        mute: 1,
+        modestbranding: 1
+      }
+    }
     return (
       <div className="background-media-carousel-video">
-        <iframe
-          src={`https://www.youtube.com/embed/${this.props.youtubeVideoId}?controls=0&mute=1&modestbranding=1&autoplay=1`}
-          title={this.props.gameIconLabel}
-          style={{
-            display: 'block',
-            position: 'relative',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            height: '100vh',
-            width: '100%',
-            transition: '400ms ease-in'
-          }}
-          onLoad={this.handleFileLoad}
-          frameBorder="0"
-        >
-        </iframe>
+        <div className="videoWrapper">
+          <Youtube
+            videoId={this.props.youtubeVideoId}
+            className='video-player'
+            onEnd={this.props.handleVideoEnded}
+            opts={opts}
+          />
+        </div>
         <Icon
           label={this.props.gameIconLabel}
           icon={this.props.gameIcon}
         />
-      </div>
+      </div >
     );
   }
 }

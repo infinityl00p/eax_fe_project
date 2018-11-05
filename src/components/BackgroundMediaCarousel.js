@@ -25,10 +25,7 @@ class BackgroundMediaCarousel extends Component {
 
     if (activeMediaItem.type === 'image' && secondsActive === 10) {
       return this.setNextItem();
-    } else if (activeMediaItem.type === 'video' && secondsActive == activeMediaItem.lengthInSeconds) {
-      return this.setNextItem();
-    }
-    else { this.setState({ secondsActive: secondsActive }); }
+    } else { this.setState({ secondsActive: secondsActive }); }
   }
 
   setNextItem = () => {
@@ -47,6 +44,10 @@ class BackgroundMediaCarousel extends Component {
     }
   }
 
+  handleVideoEnded = () => {
+    return this.setNextItem();
+  }
+
   renderActiveItem = () => {
     const { mediaItems } = this.props;
     const { currentElementIndex } = this.state;
@@ -57,6 +58,7 @@ class BackgroundMediaCarousel extends Component {
         youtubeVideoId={mediaItems[currentElementIndex].youtubeVideoId}
         gameIcon={mediaItems[currentElementIndex].gameIcon || null}
         gameIconLabel={mediaItems[currentElementIndex].gameIconLabel || null}
+        handleVideoEnded={this.handleVideoEnded}
       />
       :
       <BackgroundMediaCarouselImage
