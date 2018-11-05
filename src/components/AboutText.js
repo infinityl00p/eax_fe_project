@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/AboutText.css';
 
 function AboutText(props) {
   return (

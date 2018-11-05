@@ -1,0 +1,17 @@
+about-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  z-index: 10;
+}
+
+.about-text__content--light { font-weight: 300; }
+
+.about-text__content--h1 { font-size: 5rem; }
+
+.about-text__content--h2 { font-size: 3.5rem; }
+
+.about-text__content--h3 { font-size: 2rem; }
