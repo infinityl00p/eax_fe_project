@@ -22,10 +22,14 @@ d.	Single image
 e.	Combination of videos and images
 
 [x]	Videos are all hosted on YouTube.
+
 [x]	Use images/videos provided in the html attached.
+
 [x]	The top navigation should be dynamically populated; navigation anchor data should come from anchors <about-navigation-anchor> embedded in each <about-section>.Keep in mind that the order in which each <about-navigation-anchor> gets initialized is not guaranteed. The ordering of each anchor in top navigation should be preserved. NOTE: The top navigation can be seen near the center of the top section in the wireframe, which reads:
 a.	“Great PC Games                            Download Now”
 
 [x]	The page must be fully functional in latest versions of Edge, Firefox and Chrome
+
 [x]  Bonus 1: Pause carousel videos when out of the viewport, the video should resume when video is back in viewport
+
 [x]	Bonus 2: Make the page responsive
