@@ -1,0 +1,14 @@
+.game-icon {
+  position: absolute;
+  top: 3.5rem;
+  right: 3.5rem;
+}
+
+.game-icon__label {
+  color: #fff;
+  margin: 0 1rem;
+  vertical-align: top;
+  font-size: 1.2rem;
+}
+
+.game-icon__img { height: 6rem; }
